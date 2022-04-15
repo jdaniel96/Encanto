@@ -8,8 +8,8 @@ const TransactionUI = function() {
                         <h2 className="Send p-1 TextLabels shadow">Swap/change "Token Name"  for "This other Token"</h2>    
                     </Col>
                     <Col className="mt-4">
-                        <input className="enter1 mb-2 p-2 col-12 rounded" placeholder="You give..."></input>
-                        <input className="enter1 p-2 col-12 rouded" placeholder="You receive..."></input>    
+                        <input className="enter1 mb-2 p-2 col-12 rounded" placeholder="Send to: "></input>
+                        <input type="Number"className="enter1 p-2 col-12 rounded" placeholder="Amount to send"></input>    
                     </Col>
                 </Row>
                 <Row>
