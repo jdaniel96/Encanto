@@ -21,7 +21,7 @@ useEffect(() => {
     
     
     async function Data() {
-    const wallet2 = JSON.stringify(useWallet().publicKey);
+    const wallet2 = JSON.stringify(useWallet().publicKey); //TODO it doesn't pull the public key
     const accounts:{[index: string]:any} = await connection.getParsedProgramAccounts(
       
       TOKEN_PROGRAM_ID, // new PublicKey("TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA")
@@ -48,6 +48,7 @@ useEffect(() => {
 
     
 
+
      return(
   
        <div>
@@ -62,9 +63,11 @@ useEffect(() => {
   }
 
 
+
 export const UI = function(){ //import this component to your app.tsx 
 
   return(
     <MintAndBalance/>
   )
 }
+
