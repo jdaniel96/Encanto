@@ -5,7 +5,7 @@ const TransactionUI = function() {
             <div className=" wrapper shadow mt-5 p-5 col-lg-6 rounded">
                 <Row>
                     <Col>
-                        <h2 className="Send p-1 TextLabels shadow">Swap/change "Token Name"  for "This other Token"</h2>    
+                        <h2 className="Send p-1 TextLabels shadow">Send/Pay Encanto</h2>    
                     </Col>
                     <Col className="mt-4">
                         <input className="enter1 mb-2 p-2 col-12 rounded" placeholder="Send to: "></input>
@@ -14,7 +14,7 @@ const TransactionUI = function() {
                 </Row>
                 <Row>
                     <Col>
-                        <p className="shadow p-2 mt-4 sm-invisible">Aquí una breve explicación acerca de este UI para hacer swaps y tal vez el valor de la moneda respecto al dólar.</p> 
+                        <p className="shadow p-2 mt-4 sm-invisible">Aquí una breve explicación acerca de este UI para enviar Tokens sin costo en Sol.</p> 
                          
                     </Col>
                     <Col>
