@@ -25,7 +25,7 @@ const App: FC = () => {
         <Context>
             <Container className="pt-5">
                 <Content />
-          <UI/> {/* this doesn't show*/}
+          {/* <UI/> this doesn't show */}
             </Container>
             <TransactionUI/>
         </Context>
@@ -60,6 +60,7 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
         <ConnectionProvider endpoint={endpoint}>
             <WalletProvider wallets={wallets} autoConnect>
                 <WalletModalProvider>{children}</WalletModalProvider>
+                <UI/> {/* this doesn't show*/}
             </WalletProvider>
         </ConnectionProvider>
     );
