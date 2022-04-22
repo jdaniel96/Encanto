@@ -13,7 +13,7 @@ function MintAndBalance () {
   const walletAddress = useWallet().publicKey?.toString(); 
   const [Account, SetAccount] = useState<any>(null)
 
-    const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
+    const connection = new Connection(clusterApiUrl("mainnet-beta"), "confirmed");
     
     
     
