@@ -10,10 +10,8 @@ import { useWallet } from "@solana/wallet-adapter-react";
 
 
 function MintAndBalance () {
+  const walletAddress = useWallet().publicKey?.toString(); 
   const [Account, SetAccount] = useState<any>(null)
-  
- 
-  //  const MY_WALLET_ADDRESS = "55DwoQzQSVvkXdGwKqz7yfwqLxf81rm4GTrUau8EVU9K";
 
     const connection = new Connection(clusterApiUrl("devnet"), "confirmed");
     
@@ -21,7 +19,7 @@ function MintAndBalance () {
     
     async function Data() {
       try{
-        const wallet = useWallet().publicKey?.toString(); //TODO it doesn't pull the public key
+        const wallet = useWallet().publicKey?.toString(); 
         console.log(wallet);
         
         if (wallet){
@@ -57,22 +55,6 @@ function MintAndBalance () {
     Data();
   }
  
-
-
-    /*
-      },[])
-{Account.map((account:any)=>(
-      <div>
-      <h1>Token mint Address: {account.account.data["parsed"]["info"]["mint"]}</h1>
-      <h1>Your Token Balance is: {account.account.data["parsed"]["info"]["tokenAmount"]["uiAmount"]}</h1>
-      </div>
-    ))
-    
-  }
-  */
-    
-
-
      return(
 
       <div style={{color: "white"}}>
@@ -80,6 +62,8 @@ function MintAndBalance () {
         Token mint Address: {Account ? Account[0].account.data.parsed.info.mint : 'connect wallet'}
         <br />
         Your Token Balance is: {Account ? Account[0].account.data.parsed.info.tokenAmount.uiAmount : 'connect wallet'}
+        <br />
+        Your wallet address is: {walletAddress}
       </div>
     )
   
