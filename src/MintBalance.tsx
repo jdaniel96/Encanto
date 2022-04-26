@@ -4,11 +4,6 @@ import { useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
 
 
-
-
-  
-
-
 function MintAndBalance () {
   const walletAddress = useWallet().publicKey?.toString(); 
   const [Account, SetAccount] = useState<any>(null)

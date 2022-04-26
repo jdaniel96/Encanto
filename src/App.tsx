@@ -26,7 +26,7 @@ const App: FC = () => {
         <Context>
             <Container className="pt-5">
             <Content />
-                <UI/>
+                {/* <UI/> */}
             </Container>
             <TransactionUI/>
         </Context>

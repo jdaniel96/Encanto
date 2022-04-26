@@ -58,8 +58,8 @@ const TransactionUI = function() {
                         <h2 className="Send p-1 TextLabels shadow">Send/Pay Encanto</h2>    
                     </Col>
                     <Col className="mt-4">
-                        <input onChange={handleChange} value={inputs.sendToAddress} name="sendToAddress"  className="enter1 mb-2 p-2 col-12 rounded" placeholder="Send to: "></input>
-                        <input onChange={handleChange} value={inputs.amountToSend} name="amountToSend" type="Number" className="enter1 p-2 col-12 rounded" placeholder="Amount to send"></input>    
+                        <input onChange={handleChange} defaultValue={inputs.sendToAddress} name="sendToAddress"  className="enter1 mb-2 p-2 col-12 rounded" placeholder="Send to: "></input>
+                        <input onChange={handleChange} defaultValue={inputs.amountToSend} name="amountToSend" type="Number" className="enter1 p-2 col-12 rounded" placeholder="Amount to send"></input>    
                     </Col>
                 </Row>
                 <Row>
