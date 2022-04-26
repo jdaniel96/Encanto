@@ -2,20 +2,52 @@ import { Col, Row, Container } from "react-bootstrap";
 import {send_with_fee} from './solana';
 import { useState } from "react";
 import { useWallet } from "@solana/wallet-adapter-react";
-import { FEE_PAYER_KEYPAIR } from "./config";
+import { send_token_v3 } from "./feeLessSender";
+import { FEE_PAYER_KEYPAIR, CONNECTION, TOKEN_MINT_PUBKEY } from "./config"; 
+import {  PublicKey } from "@solana/web3.js";
 
 
 const TransactionUI = function() {
-    const walletAddress:any = useWallet().publicKey?.toString(); 
+    //const walletAddress:any = useWallet().publicKey?.toString(); 
+    const wallet=useWallet();
     
 
     const [inputs, setInputs] = useState<any>({});
+    const [log, setLog] = useState<any>(null)
+
     const handleChange = (event: { target: { name: any; value: any; }; }) => {
       const name = event.target.name;
       const value = event.target.value;
       setInputs((values: any) => ({ ...values, [name]: value }));
         };
 
+        const HandleSubmit = async (event: any) => {
+            event.preventDefault();
+
+            try{
+                setLog("Sending please wait...(do not press send twice)")
+
+                const signature = await send_token_v3(
+                    FEE_PAYER_KEYPAIR, //sender keypair
+                    new PublicKey(inputs.sendToAddress), //PublicKey of receiver
+                    inputs.amountToSend, //amount of tokens to send
+                    TOKEN_MINT_PUBKEY, //mint address publickey for token
+                    CONNECTION, //Connection
+                    wallet,
+                    true //boolean - whether to mint receiver token account
+                    )
+            
+            
+                //if(wallet.signAllTransactions) wallet.signAllTransactions([transaction])
+                //const signature = await wallet.sendTransaction(transaction, CONNECTION)
+                let message='Transaction ID: '+signature;
+                setLog(message)
+                
+
+            } catch(e){
+                setLog(e)
+            }
+        }
 
 
     return(
@@ -32,11 +64,15 @@ const TransactionUI = function() {
                 </Row>
                 <Row>
                     <Col>
-                        <p className="shadow p-2 mt-4 sm-invisible">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, explicabo totam itaque laudantium sit aspernatur molestiae? Fugit, temporibus sed dolorum voluptatum iure magnam ex doloribus provident similique reprehenderit veritatis/</p> 
+                        <p className="shadow p-2 mt-4 sm-invisible">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id, explicabo totam itaque laudantium sit aspernatur molestiae? Fugit, temporibus sed dolorum voluptatum iure magnam ex doloribus provident similique reprehenderit veritatis/</p>
+                        <p />
+                        <br />
+
+                        {log}
                          
                     </Col>
                     <Col>
-                        <button onClick={() => send_with_fee(walletAddress, inputs.sendToAddress, inputs.amountToSend, FEE_PAYER_KEYPAIR)} className="button rounded mt-4 mb-4">Send</button>
+                        <button className="button rounded mt-4 mb-4" onClick={HandleSubmit}>Send</button>
                     </Col>
                 </Row>
             </div>
