@@ -18,7 +18,6 @@ import {Container} from 'react-bootstrap'
 
 
 
-
 require('./App.css');
 require('@solana/wallet-adapter-react-ui/styles.css');
 
@@ -26,7 +25,7 @@ const App: FC = () => {
     return (
         <Context>
             <Container className="pt-5">
-                <Content />
+            <Content />
                 <UI/>
             </Container>
             <TransactionUI/>
@@ -40,6 +39,7 @@ const Context: FC<{ children: ReactNode }> = ({ children }) => {
     const network = WalletAdapterNetwork.Mainnet;
 
     // You can also provide a custom RPC endpoint.
+    //new Connection('https://solana-api.projectserum.com', 'confirmed');
     const endpoint = useMemo(() => clusterApiUrl(network), [network]);
 
     // @solana/wallet-adapter-wallets includes all the adapters but supports tree shaking and lazy loading --
